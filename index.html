@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#35634d">
+  <meta name="description" content="작은 집중이 쌓여 나만의 방이 되는 곳. 나만의 동물 친구를 꾸미고 함께 공부해요.">
+  <title>몰입의 방 · 나의 작은 집중 습관</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="header wrap">
+    <a href="./" class="brand"><span class="brand-icon" aria-hidden="true">✿</span> 몰입의 방</a>
+    <span class="header-note">작은 집중이 만드는 나만의 공간</span>
+    <span class="wallet" aria-label="보유 포인트"><span aria-hidden="true">✦</span> <b id="balance">0</b> P</span>
+  </header>
+  <main class="wrap">
+    <section class="intro"><p class="eyebrow">A LITTLE FOCUS, A LITTLE GROWTH</p><h1>오늘도, 한 뼘 더 자라요.</h1><p>나만의 동물 친구와 방을 꾸며요. 우리 함께 시작할까요?</p></section>
+    <div class="main-grid">
+      <section class="card focus-card" aria-labelledby="focus-heading">
+        <div class="section-top"><h2 id="focus-heading">나의 집중 시간</h2><span class="pill" id="session-status">시작할 준비 완료</span></div>
+        <form id="focus-form">
+          <label for="goal">이번엔 무엇에 집중할까요?</label>
+          <input id="goal" maxlength="60" placeholder="예: 수학 문제집 10쪽 풀기" autocomplete="off">
+          <div class="duration-label"><label for="minutes">집중 시간</label><span>1분당 2P 적립</span></div>
+          <div class="presets" role="group" aria-label="집중 시간 선택"><button type="button" data-minutes="15">15분</button><button type="button" data-minutes="30" class="selected">30분</button><button type="button" data-minutes="50">50분</button><div class="custom-time"><input id="minutes" type="number" min="1" max="180" step="1" value="30" required aria-label="직접 입력할 집중 시간 (분)"><span>분</span></div></div>
+          <div class="timer" id="timer-ring"><div><span class="timer-caption" id="timer-caption">온전히 나에게 집중하는 시간</span><strong id="countdown" role="timer" aria-label="남은 집중 시간">30:00</strong><span class="reward" id="reward">완료하면 +60 P</span></div></div>
+          <p class="encouragement" id="encouragement" aria-live="polite">“시작하는 것만으로도 이미 잘하고 있어!”</p>
+          <button class="primary" id="start" type="submit"><span aria-hidden="true">▶</span> 집중 시작하기</button>
+          <button id="stop" class="stop" type="button" hidden>이번 집중 그만하기</button>
+        </form>
+        <p class="rule"><span aria-hidden="true">ⓘ</span> 화면을 벗어나면 타이머가 멈추고 보상이 20%씩 줄어요.<br>화면 잠금도 이탈에 포함돼요. 이 화면을 켜두세요.</p>
+      </section>
+      <section class="card room-card" aria-labelledby="room-heading">
+        <div class="section-top"><div><p class="eyebrow">MY LITTLE ROOM</p><h2 id="room-heading">모리의 작은 방</h2></div><span class="room-tag">함께 자라는 중</span></div>
+        <div class="room" id="room" role="img" aria-label="책상 앞에서 공부하는 토끼 모리의 방">
+          <div class="window"><div class="cloud"></div><span class="sun"></span></div><div class="wall-art">little<br><em>by little.</em></div>
+          <div class="shelf"><i></i><i></i><i></i><span>☕</span></div>
+          <div class="floor"></div><div class="rug"></div>
+          <div class="room-plant decor" data-decoration="plant" hidden>🪴</div>
+          <div class="room-lamp decor" data-decoration="lamp" hidden>💡</div>
+          <div class="room-frame decor" data-decoration="frame" hidden>🌷</div>
+          <div class="bunny" id="character" data-character="bunny" data-expression="smile" aria-hidden="true">
+            <div class="ear left"></div><div class="ear right"></div><div class="bunny-body"></div>
+            <span class="shirt decor" data-decoration="shirt" hidden></span>
+            <div class="bunny-head"><span class="muzzle"></span><span class="eye left"></span><span class="eye right"></span><span class="cheek left"></span><span class="cheek right"></span><span class="nose">ᴗ</span><span class="whiskers"></span><span class="glasses decor" data-decoration="glasses" hidden></span></div>
+            <span class="scarf decor" data-decoration="scarf" hidden></span><span class="hat decor" data-decoration="hat" hidden>👑</span><span class="bow decor" data-decoration="bow" hidden></span>
+          </div>
+          <div class="desk"><div class="book"></div><div class="pencil"></div><div class="mug"></div></div>
+          <span class="sparkle one">✦</span><span class="sparkle two">✧</span>
+        </div>
+        <div class="room-caption"><span class="avatar" id="character-avatar" aria-hidden="true">🐰</span><div><b id="character-caption">모리의 한마디</b><p id="mori-message">네가 집중하면 내 방도 조금씩 특별해져!</p></div></div>
+        <section class="character-studio" aria-labelledby="studio-heading">
+          <div class="studio-heading"><h3 id="studio-heading">나만의 친구 꾸미기</h3><span>캐릭터·색상·표정은 무료</span></div>
+          <div id="character-choices" class="character-choices" role="group" aria-label="캐릭터 선택"></div>
+          <div class="style-row"><span id="fur-label">털색</span><div id="color-choices" class="swatches" role="group" aria-labelledby="fur-label"></div></div>
+          <div class="style-row"><span id="expression-label">표정</span><div id="expression-choices" class="expression-choices" role="group" aria-labelledby="expression-label"></div></div>
+          <div class="style-row"><span id="accent-label">의상 색</span><div id="accent-choices" class="swatches" role="group" aria-labelledby="accent-label"></div></div>
+          <p class="studio-note">의상 색은 목도리·리본·니트에 적용돼요. 구매한 의상은 모든 친구가 함께 사용해요.</p>
+        </section>
+        <div class="shop-heading"><h3>작은 상점</h3><span>집중해서 모은 포인트로 꾸며요</span></div>
+        <div class="shop-filters" role="group" aria-label="상점 종류"><button type="button" data-shop-category="character" aria-pressed="true">캐릭터 의상</button><button type="button" data-shop-category="room" aria-pressed="false">방 꾸미기</button></div>
+        <div class="shop" id="shop"></div>
+        <p class="shop-note">착용·배치 중인 아이템을 다시 누르면 해제돼요. 왕관과 리본은 하나씩 착용해요.</p>
+      </section>
+    </div>
+    <section class="card records-card" aria-labelledby="records-heading">
+      <div class="section-top"><div><p class="eyebrow">ONE DAY AT A TIME</p><h2 id="records-heading">차곡차곡 쌓인 집중</h2></div><label class="daily-setting" for="daily-goal">하루 목표 <input id="daily-goal" type="number" min="1" max="1440" step="1" value="120"> 분</label></div>
+      <div class="records-grid"><div class="today"><span>오늘 집중한 시간</span><div><strong id="today-time">0</strong> 분 <span id="daily-percent" class="percent">0%</span></div><progress id="daily-progress" max="100" value="0" aria-label="오늘 집중 목표 달성률"></progress><p id="daily-text">오늘의 첫 집중을 시작해 보세요.</p></div><div class="week"><div class="chart-top"><h3>최근 7일</h3><span id="week-total">총 0분</span></div><div id="chart" class="chart" aria-label="최근 7일 집중 시간"></div></div><div class="achievement"><span>최근 7일 세션 달성률</span><strong id="success-rate">0<span>%</span></strong><p id="session-count">완료한 집중 0 / 0회</p></div></div>
+      <details><summary>최근 집중 기록</summary><ul id="history" class="history"></ul></details>
+    </section>
+    <footer><span>✿ 조금씩, 꾸준히. 너만의 속도로.</span><p>기록은 이 브라우저에 저장돼요.</p></footer>
+  </main>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <dialog id="stop-dialog"><h2>잠깐 쉬어갈까요?</h2><p>지금 종료하면 공부한 시간만 기록되고<br>이번 세션의 포인트는 지급되지 않아요.</p><div class="dialog-actions"><button class="secondary" id="keep-going">계속 집중하기</button><button class="primary" id="confirm-stop">집중 종료</button></div></dialog>
+</body>
+</html>
